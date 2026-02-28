@@ -3,7 +3,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronLeft, ListTodo, Users, Activity, Settings as SettingsIcon, ExternalLink, Home } from 'lucide-react';
+import { ChevronLeft, ListTodo, Users, Activity, Settings as SettingsIcon, ExternalLink, Home, BarChart3 } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { AgentsSidebar } from '@/components/AgentsSidebar';
 import { MissionQueue } from '@/components/MissionQueue';
@@ -316,6 +316,14 @@ function MobileSettingsPanel({ workspace, denseLandscape = false }: { workspace:
           <div className="text-xs text-mc-text-secondary mt-1">/{workspace.slug}</div>
         </div>
 
+
+        <Link href={`/workspace/${workspace.slug}/activity`} className="w-full min-h-11 px-4 rounded-lg border border-mc-border bg-mc-bg-secondary flex items-center justify-between text-sm">
+          <span className="flex items-center gap-2">
+            <BarChart3 className="w-4 h-4" />
+            Agent Activity Dashboard
+          </span>
+          <ExternalLink className="w-4 h-4 text-mc-text-secondary" />
+        </Link>
         <Link href="/settings" className="w-full min-h-11 px-4 rounded-lg border border-mc-border bg-mc-bg-secondary flex items-center justify-between text-sm">
           <span className="flex items-center gap-2">
             <SettingsIcon className="w-4 h-4" />
