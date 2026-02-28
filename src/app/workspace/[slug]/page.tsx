@@ -67,6 +67,12 @@ export default function WorkspacePage() {
   }, [slug, setIsLoading]);
 
   useEffect(() => {
+    if (!isPortrait && mobileTab === 'queue') {
+      setMobileTab('agents');
+    }
+  }, [isPortrait, mobileTab]);
+
+  useEffect(() => {
     if (!workspace) return;
 
     const workspaceId = workspace.id;
@@ -137,7 +143,7 @@ export default function WorkspacePage() {
             newTasks.length !== currentTasks.length ||
             newTasks.some((t) => {
               const current = currentTasks.find((ct) => ct.id === t.id);
-              return !current || current.status !== t.status;
+              return !current || current.updated_at !== t.updated_at;
             });
 
           if (hasChanges) {
